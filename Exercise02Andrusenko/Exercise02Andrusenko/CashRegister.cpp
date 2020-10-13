@@ -21,7 +21,7 @@ CashRegister::~CashRegister() {
 Receipt& CashRegister::CreateReceipt(double amount, double dph) {
 	Receipt newReceipt{ amount, dph };
 	if (receipts.size() == 10) {
-		throw new exception("CashRegister is full");
+		throw exception("CashRegister is full");
 	}
 	else {
 		newReceipt.SetId(idCounter + receipts.size());
@@ -33,25 +33,25 @@ Receipt& CashRegister::CreateReceipt(double amount, double dph) {
 
 Receipt& CashRegister::GetReceipt(int id) {
 	if (receipts.size() == 0) {
-		throw new exception("CashRegister is empty");
+		throw exception("CashRegister is empty");
 	}
 	else {
 		auto it = find_if(receipts.begin(), receipts.end(), [&](Receipt const& r) { return r.GetId() == id; });
 
 		if (it == end(receipts)) {
-			throw new exception("Receipt not found");
+			throw exception("Receipt not found");
 		}
 		else {
 			return *it;
 		}
 	}
 
-	throw new exception;
+	throw exception("Unknown");
 }
 
 double CashRegister::GetAmount() const {
 	if (receipts.size() == 0) {
-		throw new exception("CashRegister is empty");
+		throw exception("CashRegister is empty");
 	}
 
 	double sum = 0;
@@ -65,7 +65,7 @@ double CashRegister::GetAmount() const {
 
 double CashRegister::GetAmaountInclDph() const {
 	if (receipts.size() == 0) {
-		throw new exception("CashRegister is empty");
+		throw exception("CashRegister is empty");
 	}
 
 	double sumWithDph = 0;
