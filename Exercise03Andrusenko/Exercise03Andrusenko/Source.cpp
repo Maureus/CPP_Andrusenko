@@ -17,6 +17,7 @@ int main(int agrc, char** argv)
 	cout << "X: " << so1.GetX() << endl;
 	cout << "Y: " << so1.GetY() << endl;
 	MovableObject mo1(3);
+	mo1.SetRotationAngle(15.0);
 	cout << "mo1: " << mo1.GetId() << ", angle:"<< mo1.GetRotationAngle() <<endl;
 
 
