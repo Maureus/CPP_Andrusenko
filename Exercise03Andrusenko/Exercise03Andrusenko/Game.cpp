@@ -1,7 +1,5 @@
 #include <iostream>
 #include <exception>
-#include <algorithm>
-#include <iterator>
 
 #include "Game.h"
 #include "StaticObject.h"
