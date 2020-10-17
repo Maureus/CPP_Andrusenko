@@ -5,8 +5,10 @@
 class Game
 {
 	Object** objects;
+	int counterObjects;
+	int size;
 public:
-	Game(Object** objects);
+	Game(int size);
 	~Game();
 	void AddObject(Object* o);
 	int* FindIdsOfStaticObjectsInXY(double xmin, double xmax, double ymin, double ymax);

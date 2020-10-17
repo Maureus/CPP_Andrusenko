@@ -1,8 +1,14 @@
 #include "Object.h"
 
+Object::Object()
+{
+}
+
 Object::Object(int id)
 {
-	this->id = id;	
+	this->id = id;
+	this->x = 0;
+	this->y = 0;
 }
 
 Object::~Object()

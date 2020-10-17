@@ -6,6 +6,7 @@ protected:
 	double x;
 	double y;
 public:
+	Object();
 	Object(int);
 	virtual ~Object();
 	void SetX(double);

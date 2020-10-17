@@ -4,10 +4,10 @@
 class MovableObject :
     public Object
 {
-    double rotationAngle;
+    double directionAngle;
 public:
     MovableObject(int);
-    void SetRotationAngle(double);
-    double GetRotationAngle() const;
+    virtual void SetDirectionAngle(double);
+    virtual double GetDirectionAngle() const;
 };
 

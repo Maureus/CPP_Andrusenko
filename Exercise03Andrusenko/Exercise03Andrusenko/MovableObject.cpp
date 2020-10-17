@@ -4,12 +4,12 @@ MovableObject::MovableObject(int id) : Object(id)
 {	
 }
 
-void MovableObject::SetRotationAngle(double rotationAngle)
+void MovableObject::SetDirectionAngle(double rotationAngle)
 {
-	this->rotationAngle = rotationAngle;
+	this->directionAngle = rotationAngle;
 }
 
-double MovableObject::GetRotationAngle() const
+double MovableObject::GetDirectionAngle() const
 {
-	return rotationAngle;
+	return directionAngle;
 }
