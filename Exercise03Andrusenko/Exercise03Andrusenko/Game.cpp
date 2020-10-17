@@ -69,7 +69,13 @@ MovableObject** Game::FindMovableObjectsInArea(double x, double y, double r)
 
 	if (counterMO != 0)
 	{
-		return mObjects;
+		MovableObject** mObjectsCopy = new MovableObject * [counterMO];
+		for (int i = 0; i < counterMO; i++)
+		{
+			mObjectsCopy[i] = mObjects[i];
+		}
+		delete[] mObjects;
+		return mObjectsCopy;
 	}
 
 	delete[] mObjects;

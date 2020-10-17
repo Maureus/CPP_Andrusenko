@@ -50,10 +50,6 @@ int main(int agrc, char** argv)
 		MovableObject** mos2 = game->FindMovableObjectsInAreaWithAngle(1.0, 5.0, 5.0, 14.0, 20.0);
 		MovableObject* m3 = mos2[0];
 		MovableObject* m4 = mos2[1];
-		
-		
-		
-		
 
 		Object* object = new StaticObject{ 1, Obstacle::SmallPlant };
 		StaticObject* so = dynamic_cast<StaticObject*>(object);

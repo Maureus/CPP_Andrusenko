@@ -5,8 +5,7 @@ protected:
 	int id;
 	double x;
 	double y;
-public:
-	Object();
+public:	
 	Object(int);
 	virtual ~Object();
 	void SetX(double);
