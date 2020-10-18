@@ -38,11 +38,13 @@ int* Game::FindIdsOfStaticObjectsInXY(double xmin, double xmax, double ymin, dou
 		{
 			if (objects[i]->GetX() >= xmin && objects[i]->GetX() <= xmax && objects[i]->GetY() >= ymin && objects[i]->GetY() <= ymax)
 			{
-				ids[countIds++] = objects[i]->GetId();
+				ids[++countIds] = objects[i]->GetId();
 			}
 		}
 		
 	}
+
+	ids[0] = countIds;
 
 	if (countIds != 0)
 	{
@@ -99,7 +101,13 @@ MovableObject** Game::FindMovableObjectsInAreaWithAngle(double x, double y, doub
 
 	if (counterMO != 0)
 	{
-		return mObjects;
+		MovableObject** mObjectsCopy = new MovableObject * [counterMO];
+		for (int i = 0; i < counterMO; i++)
+		{
+			mObjectsCopy[i] = mObjects[i];
+		}
+		delete[] mObjects;
+		return mObjectsCopy;
 	}
 
 	delete[] mObjects;

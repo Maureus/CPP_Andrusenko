@@ -23,7 +23,7 @@ int main(int agrc, char** argv)
 		so2->SetX(7.0);
 		so2->SetY(3.0);
 		Object* so3 = new StaticObject{ 3, Obstacle::SmallPlant };
-		so3->SetX(2.0);
+		so3->SetX(4.0);
 		so3->SetY(3.0);	
 		Object* mo4 = new MovableObject{ 4 };
 		mo4->SetX(2.0);
@@ -43,6 +43,11 @@ int main(int agrc, char** argv)
 		game->AddObject(mo5);
 
 		int* sos = game->FindIdsOfStaticObjectsInXY(1.0, 5.0, 1.0, 5.0);
+		cout << "Ids: " << endl;
+		for (int i = 1; i <= sos[0]; i++)
+		{
+			cout << sos[i] << endl;
+		}
 		MovableObject** mos = game->FindMovableObjectsInArea(1.0, 5.0, 5.0);
 		MovableObject* m1 = mos[0];
 		MovableObject* m2 = mos[1];
