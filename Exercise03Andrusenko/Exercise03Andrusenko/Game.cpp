@@ -115,3 +115,8 @@ MovableObject** Game::FindMovableObjectsInAreaWithAngle(double x, double y, doub
 	delete[] mObjects;
 	return nullptr;
 }
+
+int Game::GetCounter() const
+{
+	return counterObjects;
+}
