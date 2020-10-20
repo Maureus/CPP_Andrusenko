@@ -12,7 +12,7 @@ class Game
 public:
 	Game(int size);	
 	~Game();
-	void AddObject(Object* o);
+	void AddObject(Object* object);
 	int* FindIdsOfStaticObjectsInXY(double xmin, double xmax, double ymin, double ymax);
 	MovableObject** FindMovableObjectsInArea(double x, double y, double r);
 	MovableObject** FindMovableObjectsInAreaWithAngle(double x, double y, double r, double umin, double umax);

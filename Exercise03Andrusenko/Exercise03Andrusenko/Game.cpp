@@ -20,19 +20,19 @@ Game::~Game()
 	delete[] objects;
 }
 
-void Game::AddObject(Object* o)
+void Game::AddObject(Object* object)
 {
 	if (counterObjects == size)
 	{
 		throw out_of_range("Array is full!");
 	}
 	
-	objects[counterObjects++] = o;	
+	objects[counterObjects++] = object;	
 }
 
 int* Game::FindIdsOfStaticObjectsInXY(double xmin, double xmax, double ymin, double ymax)
 {
-	int* ids = new int[counterObjects];
+	int* ids = new int[counterObjects+1];
 	int countIds = 0;
 	for (int i = 0; i < counterObjects; i++)
 	{
