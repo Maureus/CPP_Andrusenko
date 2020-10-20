@@ -15,12 +15,6 @@ Game::Game(int size)
 	counterObjects = 0;	
 }
 
-Game::Game(const Game& other) :size(other.size), counterObjects(other.counterObjects)
-{
-	objects = new Object * [size];
-	std::copy(other.objects[0], other.objects[size-1], objects[0]);
-}
-
 Game::~Game()
 {
 	delete[] objects;

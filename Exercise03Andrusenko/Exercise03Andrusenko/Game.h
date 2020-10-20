@@ -10,8 +10,7 @@ class Game
 	int counterObjects;
 	int size;
 public:
-	Game(int size);
-	Game(const Game& other);
+	Game(int size);	
 	~Game();
 	void AddObject(Object* o);
 	int* FindIdsOfStaticObjectsInXY(double xmin, double xmax, double ymin, double ymax);
