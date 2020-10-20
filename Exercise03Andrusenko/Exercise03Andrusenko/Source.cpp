@@ -68,8 +68,7 @@ int main(int agrc, char** argv)
 		delete so3;
 		delete mo4;
 		delete mo5;
-		delete object;		
-		game->~Game();
+		delete object;
 	}
 	catch (const std::exception& e)
 	{

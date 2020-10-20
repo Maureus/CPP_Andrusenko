@@ -1,5 +1,7 @@
 #include <iostream>
 #include <exception>
+#include <algorithm>
+#include <iterator>
 
 #include "Game.h"
 #include "StaticObject.h"
@@ -11,6 +13,12 @@ Game::Game(int size)
 	this->size = size;
 	this->objects = new Object* [size];
 	counterObjects = 0;	
+}
+
+Game::Game(const Game& other) :size(other.size), counterObjects(other.counterObjects)
+{
+	objects = new Object * [size];
+	std::copy(other.objects[0], other.objects[size-1], objects[0]);
 }
 
 Game::~Game()
