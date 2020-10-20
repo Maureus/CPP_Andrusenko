@@ -1,5 +1,8 @@
-#pragma once
+#ifndef MONSTER_H
+#define MONSTER_H
+
 #include "MovableObject.h"
+
 class Monster :
     public MovableObject
 {
@@ -12,4 +15,9 @@ public:
     int GetHp() const;
     int GetMaxhp() const;
 };
+
+#endif // !MONSTER_H
+
+
+
 

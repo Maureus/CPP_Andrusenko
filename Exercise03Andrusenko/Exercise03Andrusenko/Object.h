@@ -1,11 +1,13 @@
-#pragma once
+#ifndef OBJECT_H
+#define OBJECT_H
+
 class Object
 {
 protected:
 	int id;
 	double x;
 	double y;
-public:	
+public:
 	Object(int);
 	virtual ~Object();
 	void SetX(double);
@@ -15,3 +17,4 @@ public:
 	double GetY() const;
 };
 
+#endif // !OBJECT_H

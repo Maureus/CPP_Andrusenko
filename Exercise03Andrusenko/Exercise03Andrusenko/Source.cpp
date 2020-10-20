@@ -46,7 +46,7 @@ int main(int agrc, char** argv)
 		cout << "Ids: " << endl;
 		for (int i = 1; i <= sos[0]; i++)
 		{
-			cout << sos[i] << endl;
+			LOG(sos[i]);
 		}
 		MovableObject** mos = game->FindMovableObjectsInArea(1.0, 5.0, 5.0);
 		MovableObject* m1 = mos[0];

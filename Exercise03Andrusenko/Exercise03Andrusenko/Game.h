@@ -1,4 +1,6 @@
-#pragma once
+#ifndef GAME_H
+#define GAME_H
+
 #include "Object.h"
 #include "MovableObject.h"
 
@@ -16,4 +18,8 @@ public:
 	MovableObject** FindMovableObjectsInArea(double x, double y, double r);
 	MovableObject** FindMovableObjectsInAreaWithAngle(double x, double y, double r, double umin, double umax);
 };
+
+#endif // !GAME_H
+
+
 
