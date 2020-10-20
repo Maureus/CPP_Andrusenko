@@ -22,7 +22,7 @@ void Game::AddObject(Object* o)
 {
 	if (counterObjects == size)
 	{
-		throw std::out_of_range("Array is full!");
+		throw out_of_range("Array is full!");
 	}
 	
 	objects[counterObjects++] = o;	
