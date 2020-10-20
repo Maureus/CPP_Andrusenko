@@ -63,9 +63,12 @@ MovableObject** Game::FindMovableObjectsInArea(double x, double y, double r)
 	int counterMO = 0;
 	for (int i = 0; i < counterObjects; i++)
 	{
-		if (dynamic_cast<MovableObject*>(objects[i]) != nullptr) {
-			double distanceToPoint = sqrt((pow(x - objects[i]->GetX(), 2)) + pow(y - objects[i]->GetY(), 2));			
-			if (distanceToPoint <= r) {
+		if (dynamic_cast<MovableObject*>(objects[i]) != nullptr)
+		{
+			double distanceToPoint = sqrt((pow(x - objects[i]->GetX(), 2)) + pow(y - objects[i]->GetY(), 2));
+
+			if (distanceToPoint <= r)
+			{
 				mObjects[counterMO++] = dynamic_cast<MovableObject*>(objects[i]);
 			}
 		}
@@ -92,10 +95,13 @@ MovableObject** Game::FindMovableObjectsInAreaWithAngle(double x, double y, doub
 	int counterMO = 0;
 	for (int i = 0; i < sizeof(objects); i++)
 	{
-		if (dynamic_cast<MovableObject*>(objects[i]) != nullptr) {
+		if (dynamic_cast<MovableObject*>(objects[i]) != nullptr)
+		{
 			double distanceToPoint = sqrt((pow(x - objects[i]->GetX(), 2)) + pow(y - objects[i]->GetY(), 2));
+
 			if (distanceToPoint <= r && dynamic_cast<MovableObject*>(objects[i])->GetDirectionAngle() >= umin &&
-				dynamic_cast<MovableObject*>(objects[i])->GetDirectionAngle() <= umax) {
+				dynamic_cast<MovableObject*>(objects[i])->GetDirectionAngle() <= umax)
+			{
 				mObjects[counterMO++] = dynamic_cast<MovableObject*>(objects[i]);
 			}
 		}
