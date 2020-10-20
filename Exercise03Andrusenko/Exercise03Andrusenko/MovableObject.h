@@ -9,8 +9,8 @@ class MovableObject :
     double directionAngle;
 public:
     MovableObject(int);
-    virtual void SetDirectionAngle(double);
-    virtual double GetDirectionAngle() const;
+    void SetDirectionAngle(double);
+    double GetDirectionAngle() const;
 };
 
 #endif // !MOVABLE_OBJECT_H
