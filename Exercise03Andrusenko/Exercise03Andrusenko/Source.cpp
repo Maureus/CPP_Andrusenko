@@ -50,7 +50,8 @@ int main(int agrc, char** argv)
 		}
 		MovableObject** mos = game->FindMovableObjectsInArea(1.0, 5.0, 5.0);
 		MovableObject* m1 = mos[0];
-		MovableObject* m2 = mos[1];
+		MovableObject* m2 = mos[1];		
+		
 
 		MovableObject** mos2 = game->FindMovableObjectsInAreaWithAngle(1.0, 5.0, 5.0, 14.0, 20.0);
 		MovableObject* m3 = mos2[0];
