@@ -26,6 +26,11 @@ Time::Time(int hour, int minute, int second)
 
 int Time::CompareTo(IComparable* object)
 {
+	if (object == nullptr)
+	{
+		throw std::invalid_argument("Invalid Argument");
+	}
+
 	Time* ptr = dynamic_cast<Time*>(object);
 
 	if (ptr == nullptr)
@@ -33,17 +38,14 @@ int Time::CompareTo(IComparable* object)
 		throw std::invalid_argument("Invalid Argument");
 	}
 
-	int timeToInt = 0;
-	int timeToIntFromPtr = 0;
+	int timeToSec = second + minute * 60 + hour * 60 * 60;
+	int timeToSecFromPtr = ptr->second + ptr->minute * 60 + ptr->hour * 60 * 60;
 
-	timeToInt = second + minute * 100 + hour * 10000;
-	timeToIntFromPtr = ptr->second + ptr->minute * 100 + ptr->hour * 10000;
-
-	if (timeToInt == timeToIntFromPtr)
+	if (timeToSec == timeToSecFromPtr)
 	{		
 		return 0;
 	}
-	else if (timeToInt > timeToIntFromPtr)
+	else if (timeToSec > timeToSecFromPtr)
 	{		
 		return 1;
 	}
@@ -56,7 +58,15 @@ int Time::CompareTo(IComparable* object)
 std::string Time::ToString() const
 {
 	std::ostringstream os;
-	os << hour << ":";
+	if (hour < 10)
+	{
+		os << "0" << hour << ":";
+	}
+	else
+	{
+		os << hour << ":";
+	}
+	
 	if (minute < 10)
 	{
 		os << "0" << minute << ":";
