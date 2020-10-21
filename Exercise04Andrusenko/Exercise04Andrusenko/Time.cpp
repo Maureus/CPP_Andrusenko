@@ -6,10 +6,7 @@
 #include <exception>
 
 Time::Time()
-{
-	hour = 0;
-	minute = 0;
-	second = 0;
+{	
 }
 
 Time::Time(int hour, int minute, int second)
