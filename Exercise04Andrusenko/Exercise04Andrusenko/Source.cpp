@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void sort(vector<Time*> timeVector)
+void sort(vector<IComparable*> timeVector)
 {
 	int i, j, minIndx;
 
@@ -16,7 +16,7 @@ void sort(vector<Time*> timeVector)
 			if (timeVector.at(j)->CompareTo(timeVector.at(minIndx)) == -1)
 				minIndx = j;
 
-		Time* temp = timeVector.at(minIndx);
+		IComparable* temp = timeVector.at(minIndx);
 		timeVector.at(minIndx) = timeVector.at(i);
 		timeVector.at(i) = temp;
 	}
@@ -29,16 +29,16 @@ void sort(vector<Time*> timeVector)
 
 int main(int argc, char* argv)
 {
-	try {
+	try {		
 		int n = 10;
-		vector<Time*> timeVector (n);
+		vector<IComparable*> timeVector (n);
 		for (int i = 0; i < n; i++)
 		{
 			timeVector.at(i) = new Time(rand() % 25, rand() % 60, rand() % 60);			
 		}	
 
 		Time t1 = Time(9, 47, 40);
-		Time t2 = Time(11, 27, 1);				
+		Time t2 = Time(11, 27, 1);
 		cout << t1.ToString() << endl;
 		cout << t2.ToString() << endl;
 		cout << t1.CompareTo(&t2) << endl;
@@ -57,4 +57,3 @@ int main(int argc, char* argv)
 
 	return 0;
 }
-

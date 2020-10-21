@@ -3,7 +3,7 @@
 #include "IObject.h"
 #include "IComparable.h"
 
-class Time : public IObject, public IComparable
+class Time : public IComparable
 {
 private:
 	int second;
@@ -13,6 +13,6 @@ public:
 	Time();
 	Time(int hour, int minute, int second);
 	int CompareTo(IComparable* object) override;
-	std::string ToString() const;
+	std::string ToString() const override;
 };
 
