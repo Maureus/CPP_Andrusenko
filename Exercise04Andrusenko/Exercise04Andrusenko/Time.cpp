@@ -58,32 +58,10 @@ int Time::CompareTo(IComparable* object)
 std::string Time::ToString() const
 {
 	std::ostringstream os;
-	if (hour < 10)
-	{
-		os << "0" << hour << ":";
-	}
-	else
-	{
-		os << hour << ":";
-	}
-	
-	if (minute < 10)
-	{
-		os << "0" << minute << ":";
-	}
-	else 
-	{
-		os << minute << ":";
-	}
 
-	if (second < 10)
-	{
-		os << "0" << second;
-	}
-	else
-	{
-		os << second;
-	}
+	hour < 10 ? os << "0" << hour << ":" : os << hour << ":";
+	minute < 10 ? os << "0" << minute << ":" : os << minute << ":";
+	second < 10 ? os << "0" << second : os << second;	
 	 
 	std::string timeToStr = os.str();
 	return timeToStr;
