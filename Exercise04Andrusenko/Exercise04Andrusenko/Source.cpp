@@ -5,26 +5,25 @@
 
 using namespace std;
 
-void sort(vector<IComparable*> timeVector)
+vector<IComparable*> sort(vector<IComparable*> timeVector)
 {
-	int i, j, minIndx;
 
-	for (i = 0; i < timeVector.size() - 1; i++)
-	{
-		minIndx = i;
-		for (j = i + 1; j < timeVector.size(); j++)
-			if (timeVector.at(j)->CompareTo(timeVector.at(minIndx)) == -1)
-				minIndx = j;
+	if (timeVector.size() > 0) {
+		int i, j, minIndx;
+		for (i = 0; i < timeVector.size() - 1; i++)
+		{
+			minIndx = i;
+			for (j = i + 1; j < timeVector.size(); j++)
+				if (timeVector.at(j)->CompareTo(timeVector.at(minIndx)) == -1)
+					minIndx = j;
 
-		IComparable* temp = timeVector.at(minIndx);
-		timeVector.at(minIndx) = timeVector.at(i);
-		timeVector.at(i) = temp;
+			IComparable* temp = timeVector.at(minIndx);
+			timeVector.at(minIndx) = timeVector.at(i);
+			timeVector.at(i) = temp;
+		}
 	}
-
-	for (int k = 0; k < timeVector.size(); k++)
-	{
-		cout << timeVector.at(k)->ToString() << endl;
-	}
+	
+	return timeVector;
 }
 
 int main(int argc, char* argv)
@@ -40,7 +39,12 @@ int main(int argc, char* argv)
 
 		cout << "---------------" << endl;
 
-		sort(timeVector);
+		timeVector = sort(timeVector);
+
+		for (int i = 0; i < n; i++)
+		{			
+			cout << timeVector.at(i)->ToString() << endl;
+		}
 
 		for (int k = 0; k < timeVector.size(); k++)
 		{
