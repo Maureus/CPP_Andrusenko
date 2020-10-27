@@ -33,7 +33,7 @@ int main(int argc, char* argv)
 		vector<IComparable*> timeVector (n);
 		for (int i = 0; i < n; i++)
 		{
-			timeVector.at(i) = new Time(rand() % 25, rand() % 60, rand() % 60);			
+			timeVector.at(i) = new Time(rand() % 24, rand() % 60, rand() % 60);			
 			cout << timeVector.at(i)->ToString() << endl;
 		}
 
