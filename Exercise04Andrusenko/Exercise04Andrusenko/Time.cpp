@@ -45,18 +45,12 @@ int Time::CompareTo(IComparable* object) const
 	int timeToSec = second + minute * 60 + hour * 60 * 60;
 	int timeToSecFromPtr = ptr->second + ptr->minute * 60 + ptr->hour * 60 * 60;
 
-	if (timeToSec == timeToSecFromPtr)
-	{		
-		return 0;
-	}
-	else if (timeToSec > timeToSecFromPtr)
-	{		
-		return 1;
-	}
-	else
-	{		
-		return -1;
-	}
+	if (timeToSec == timeToSecFromPtr)			
+		return 0;	
+	else if (timeToSec > timeToSecFromPtr)			
+		return 1;	
+			
+	return -1;	
 }
 
 std::string Time::ToString() const

@@ -8,7 +8,7 @@ using namespace std;
 vector<IComparable*> sort(vector<IComparable*> timeVector)
 {
 
-	if (timeVector.size() > 0) {
+	if (timeVector.size() > 1) {
 		int i, j, minIndx;
 		for (i = 0; i < timeVector.size() - 1; i++)
 		{
