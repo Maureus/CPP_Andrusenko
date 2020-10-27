@@ -67,6 +67,5 @@ std::string Time::ToString() const
 	minute < 10 ? os << "0" << minute << ":" : os << minute << ":";
 	second < 10 ? os << "0" << second : os << second;	
 	 
-	std::string timeToStr = os.str();
-	return timeToStr;
+	return os.str();
 }
