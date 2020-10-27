@@ -13,7 +13,7 @@ public:
 	Time();
 	~Time();
 	Time(int hour, int minute, int second);
-	int CompareTo(IComparable* object) override;
+	int CompareTo(IComparable* object) const override;
 	std::string ToString() const override;
 };
 

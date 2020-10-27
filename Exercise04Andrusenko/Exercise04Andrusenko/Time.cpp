@@ -28,7 +28,7 @@ Time::Time(int hour, int minute, int second)
 	
 }
 
-int Time::CompareTo(IComparable* object)
+int Time::CompareTo(IComparable* object) const
 {
 	if (object == nullptr)
 	{

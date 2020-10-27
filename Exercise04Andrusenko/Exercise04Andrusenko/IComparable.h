@@ -2,7 +2,7 @@
 
 #include "IObject.h"
 
-class IComparable
+class IComparable : public IObject
 {
 public:
 	virtual ~IComparable() {};
