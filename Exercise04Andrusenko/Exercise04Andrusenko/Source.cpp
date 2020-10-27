@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <time.h>
 
 #include "Time.h"
 
@@ -28,7 +29,8 @@ vector<IComparable*> sort(vector<IComparable*> timeVector)
 
 int main(int argc, char* argv)
 {
-	try {		
+	try {
+		srand(time(NULL));
 		int n = 10;
 		vector<IComparable*> timeVector (n);
 		for (int i = 0; i < n; i++)
