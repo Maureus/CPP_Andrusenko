@@ -2,9 +2,9 @@
 
 #include "IObject.h"
 
-class IComparable : public IObject 
+class IComparable
 {
 public:
 	virtual ~IComparable() {};
-	virtual int CompareTo(IComparable* object) = 0;
+	virtual int CompareTo(IComparable* object) const = 0;
 };
