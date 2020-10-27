@@ -11,6 +11,7 @@ private:
 	int hour;
 public:
 	Time();
+	~Time();
 	Time(int hour, int minute, int second);
 	int CompareTo(IComparable* object) override;
 	std::string ToString() const override;

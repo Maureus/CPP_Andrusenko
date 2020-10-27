@@ -9,6 +9,10 @@ Time::Time()
 {	
 }
 
+Time::~Time()
+{
+}
+
 Time::Time(int hour, int minute, int second)
 {
 	if (hour <= 24 && minute <= 60 && second <= 60 && hour >= 0 && minute >= 0 && second >= 0)
