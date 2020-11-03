@@ -8,7 +8,7 @@ using namespace Entity;
 
 Model::PhoneList::PhoneList()
 {
-	phoneList = new MySingleLinkedListImpl<Person>();
+	phoneList = new MySingleLinkedListImpl<Entity::Person>();
 }
 
 Model::PhoneList::~PhoneList()
@@ -17,7 +17,7 @@ Model::PhoneList::~PhoneList()
 	delete phoneList;
 }
 
-void Model::PhoneList::AddPerson(Person person)
+void Model::PhoneList::AddPerson(Entity::Person person)
 {
 	phoneList->Add(person);
 }
@@ -29,20 +29,16 @@ string Model::PhoneList::FindPhoneNumberByName(string name) const
 		throw invalid_argument("Invalid atgument!");
 	}
 
-	try
+	
+	for (int i = 0; i < phoneList->GetSize(); i++)
 	{
-		for (int i = 0; i < phoneList->GetSize(); i++)
+		if (phoneList->GetOnIndex(i).GetName() == name)
 		{
-			if (phoneList->GetOnIndex(i).GetName() == name)
-			{
-				return phoneList->GetOnIndex(i).GetPhoneNumber();
-			}
+			return phoneList->GetOnIndex(i).GetPhoneNumber();
 		}
 	}
-	catch (exception e)
-	{
-		cerr << e.what() << endl;
-	}	
+
+	throw invalid_argument("Person with given name doesn't exist!");
 }
 
 string Model::PhoneList::FindPhoneNumberById(int id) const
@@ -52,20 +48,15 @@ string Model::PhoneList::FindPhoneNumberById(int id) const
 		throw invalid_argument("Invalid atgument!");
 	}
 
-	try
+	
+	for (int i = 0; i < phoneList->GetSize(); i++)
 	{
-		for (int i = 0; i < phoneList->GetSize(); i++)
+		if (phoneList->GetOnIndex(i).GetId() == id)
 		{
-			if (phoneList->GetOnIndex(i).GetId() == id)
-			{
-				return phoneList->GetOnIndex(i).GetPhoneNumber();
-			}
+			return phoneList->GetOnIndex(i).GetPhoneNumber();
 		}
-	}
-	catch (exception e)
-	{
-		cerr << e.what() << endl;
-	}
+	}	
+	
 
 	throw invalid_argument("Person with given id doesn't exist!");
 }

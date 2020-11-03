@@ -32,7 +32,7 @@ int main(int argc, char* argv)
 		
 
 		cout << phoneList->FindPhoneNumberById(999) << endl;
-		cout << phoneList->FindPhoneNumberByName("Sara") << endl;
+		cout << phoneList->FindPhoneNumberByName("asdasd") << endl;
 		delete phoneList;
 	}
 	catch (exception e)
