@@ -29,10 +29,10 @@ vector<IComparable*> sort(vector<IComparable*> timeVector)
 
 int main(int argc, char* argv)
 {
-	try {
-		srand(time(NULL));
-		int n = 10;
-		vector<IComparable*> timeVector (n);
+	srand(time(NULL));
+	int n = 10;
+	vector<IComparable*> timeVector(n);
+	try {		
 		for (int i = 0; i < n; i++)
 		{
 			timeVector.at(i) = new Time(rand() % 24, rand() % 60, rand() % 60);			
@@ -55,6 +55,10 @@ int main(int argc, char* argv)
 
 	}
 	catch (exception e) {
+		for (int k = 0; k < timeVector.size(); k++)
+		{
+			delete timeVector.at(k);
+		}
 		cerr << e.what() << endl;
 	}	
 
