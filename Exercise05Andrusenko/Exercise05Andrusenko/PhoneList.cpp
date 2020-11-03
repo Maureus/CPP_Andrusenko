@@ -62,5 +62,7 @@ string Model::PhoneList::FindPhoneNumberById(int id) const
 	catch (exception e)
 	{
 		cerr << e.what() << endl;
-	}	
+	}
+
+	throw invalid_argument("Person with given id doesn't exist!");
 }
