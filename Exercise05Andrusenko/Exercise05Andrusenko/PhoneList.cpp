@@ -19,32 +19,31 @@ Model::PhoneList::~PhoneList()
 
 void Model::PhoneList::AddPerson(Entity::Person person)
 {
-	for (int i = 0; i < phoneList->GetSize(); i++)
-	{
-		if (phoneList->GetOnIndex(i).GetName() == person.GetName())
-		{
-			throw invalid_argument("Person with this name already exists!");
-		}
-	}
 	phoneList->Add(person);
 }
 
-string Model::PhoneList::FindPhoneNumberByName(string name) const
+vector<Person> Model::PhoneList::FindPhoneNumberByName(string name) const
 {	
 	if (name.empty())
 	{
 		throw invalid_argument("Name is empty!");
 	}
+	vector<Person> listOfPerson;
 
 	for (int i = 0; i < phoneList->GetSize(); i++)
 	{
 		if (phoneList->GetOnIndex(i).GetName() == name)
 		{
-			return phoneList->GetOnIndex(i).GetPhoneNumber();
+			listOfPerson.push_back(phoneList->GetOnIndex(i));
 		}
-	}	
+	}
 
-	throw invalid_argument("Person with given name doesn't exist!");
+	if (listOfPerson.empty())
+	{
+		throw invalid_argument("Person with given name doesn't exist!");
+	}
+
+	return listOfPerson;
 }
 
 string Model::PhoneList::FindPhoneNumberById(int id) const

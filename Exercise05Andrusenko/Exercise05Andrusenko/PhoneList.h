@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 #include "Person.h"
 #include "MySinglyLinkedListImpl.h"
@@ -15,7 +16,7 @@ namespace Model {
 		PhoneList();
 		~PhoneList();
 		void AddPerson(Entity::Person person);
-		std::string FindPhoneNumberByName(std::string name) const;
+		std::vector<Entity::Person> FindPhoneNumberByName(std::string name) const;
 		std::string FindPhoneNumberById(int id) const;
 	};
 }

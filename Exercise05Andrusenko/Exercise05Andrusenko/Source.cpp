@@ -14,14 +14,16 @@ int main(int argc, char* argv)
 	try
 	{		
 		srand(time(NULL));
-		Person p1{"Andrii", "1111111" };
-		Person p2{"Marta", "2222222" };
-		Person p3{"Sara", "3333333" };
+		Person p1{ "Andrii", "1111111" };
+		Person p2{ "Marta", "2222222" };
+		Person p3{ "Sara", "3333333" };
+		Person p4{ "Sara", "23423423" };
 		phoneList->AddPerson(p1);
 		phoneList->AddPerson(p2);
 		phoneList->AddPerson(p3);
+		phoneList->AddPerson(p4);
 
-		for (int i = 4; i < 1000; i++)
+		for (int i = 5; i < 1000; i++)
 		{
 			std::ostringstream os1;
 			std::ostringstream os2;
@@ -32,7 +34,12 @@ int main(int argc, char* argv)
 		
 
 		cout << phoneList->FindPhoneNumberById(999) << endl;
-		cout << phoneList->FindPhoneNumberByName("Sara") << endl;
+		auto foundPersons = phoneList->FindPhoneNumberByName("Sara");
+		for (int i = 0; i < foundPersons.size(); i++)
+		{
+			cout << foundPersons[i].GetId() << " - " << foundPersons[i].GetPhoneNumber() << endl;
+		}
+		
 		delete phoneList;
 	}
 	catch (exception e)
