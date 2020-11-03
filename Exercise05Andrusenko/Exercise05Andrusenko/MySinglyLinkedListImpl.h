@@ -16,9 +16,9 @@ private:
 		Node(E data, Node<E> *next) : data(data), next(next) {}
 	};
 
-	int size;
-	Node<T>* head;
-	Node<T>* tail;
+	int size = 0;
+	Node<T>* head = nullptr;
+	Node<T>* tail = nullptr;
 
 public:
 	MySingleLinkedListImpl();
@@ -30,10 +30,7 @@ public:
 
 template<typename T>
 MySingleLinkedListImpl<T>::MySingleLinkedListImpl()
-{
-	size = 0;
-	head = nullptr;
-	tail = nullptr;
+{	
 }
 
 template<typename T>

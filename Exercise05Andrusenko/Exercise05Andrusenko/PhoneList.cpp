@@ -28,6 +28,7 @@ vector<Person> Model::PhoneList::FindPhoneNumberByName(string name) const
 	{
 		throw invalid_argument("Name is empty!");
 	}
+
 	vector<Person> listOfPerson;
 
 	for (int i = 0; i < phoneList->GetSize(); i++)
