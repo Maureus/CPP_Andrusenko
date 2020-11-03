@@ -26,7 +26,7 @@ string Model::PhoneList::FindPhoneNumberByName(string name) const
 {	
 	if (name.empty())
 	{
-		throw invalid_argument("Invalid atgument!");
+		throw invalid_argument("Name is empty!");
 	}
 
 	
@@ -45,7 +45,7 @@ string Model::PhoneList::FindPhoneNumberById(int id) const
 {
 	if (id <= 0)
 	{
-		throw invalid_argument("Invalid atgument!");
+		throw invalid_argument("Id is lower or equals to 0!");
 	}
 
 	

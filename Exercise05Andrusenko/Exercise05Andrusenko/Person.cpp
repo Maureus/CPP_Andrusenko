@@ -3,11 +3,11 @@
 
 using namespace std;
 
-Entity::Person::Person(int id, std::string name, std::string phoneNumber)
-{
+Entity::Person::Person(int id, const string& name, const string& phoneNumber)
+{	
 	if (id <= 0)
 	{
-		throw invalid_argument("Negative or 0 id!");
+		throw invalid_argument("Id is negatie or equals to 0!");
 	}
 	this->id = id;
 	this->name = name;
