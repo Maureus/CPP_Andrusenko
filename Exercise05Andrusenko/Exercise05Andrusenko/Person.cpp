@@ -3,19 +3,12 @@
 
 using namespace std;
 
-Entity::Person::Person(int id, const string& name, const string& phoneNumber)
-{	
-	if (id <= 0)
-	{
-		throw invalid_argument("Id is negatie or equals to 0!");
-	}
-	this->id = id;
+
+Entity::Person::Person(const string& name, const string& phoneNumber)
+{		
+	this->id = counter++;
 	this->name = name;
 	this->phoneNumber = phoneNumber;
-}
-
-Entity::Person::~Person()
-{
 }
 
 int Entity::Person::GetId() const
