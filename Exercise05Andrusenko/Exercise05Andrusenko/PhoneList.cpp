@@ -3,6 +3,9 @@
 #include <iostream>
 #include <stdexcept>
 
+using namespace std;
+using namespace Entity;
+
 Model::PhoneList::PhoneList()
 {
 	phoneList = new MySingleLinkedListImpl<Person>();
@@ -14,7 +17,7 @@ Model::PhoneList::~PhoneList()
 	delete phoneList;
 }
 
-void Model::PhoneList::AddPerson(Entity::Person person)
+void Model::PhoneList::AddPerson(Person person)
 {
 	phoneList->Add(person);
 }

@@ -1,5 +1,7 @@
 #include "Person.h"
 
+using namespace std;
+
 Entity::Person::Person(int id, std::string name, std::string phoneNumber)
 {
 	this->id = id;

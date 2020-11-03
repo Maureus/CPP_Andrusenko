@@ -1,20 +1,19 @@
 #pragma once
 #include <string>
 
-using namespace std;
 
 namespace Entity {
 	class Person
 	{
 		int id;
-		string name;
-		string phoneNumber;
+		std::string name;
+		std::string phoneNumber;
 	public:
-		Person(int id, string name, string phoneNumber);
+		Person(int id, std::string name, std::string phoneNumber);
 		~Person();
 		int GetId() const;
-		string GetName() const;		
-		string GetPhoneNumber() const;
+		std::string GetName() const;
+		std::string GetPhoneNumber() const;
 	};
 }
 

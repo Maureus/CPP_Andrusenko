@@ -31,7 +31,7 @@ int main(int argc, char* argv)
 		}	
 		
 
-		cout << phoneList->FindPhoneNumberById(1000) << endl;
+		cout << phoneList->FindPhoneNumberById(999) << endl;
 		cout << phoneList->FindPhoneNumberByName("Sara") << endl;
 		delete phoneList;
 	}
