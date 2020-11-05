@@ -1,10 +1,8 @@
 #pragma once
 
-template<typename T, int start>
+template<typename T, int DefaultCapacity = 5, int ExpansionRatio = 2>
 class ExpandingContainer
-{
-	int startSize = start;
-	int expansionRatio = 2;
+{	
 	T* field;
 	unsigned int fieldSize;
 	unsigned int numberOfElements;
@@ -13,7 +11,7 @@ class ExpandingContainer
 
 public:
 	ExpandingContainer();
-	~ExpandingContainer();
+	virtual ~ExpandingContainer();
 	void Add(const T& obj);
 	T& operator[](int index);
 	T operator[](int index) const;

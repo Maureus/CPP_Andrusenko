@@ -5,49 +5,62 @@
 
 using namespace std;
 
-template<typename T, int start>
-bool ExpandingContainer<T, start>::HasEmptySpace() const
+template<typename T, int DefaultCapacity, int ExpansionRatio>
+bool ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::HasEmptySpace() const
 {
 	return numberOfElements < fieldSize;
 }
 
-template<typename T, int start>
-void ExpandingContainer<T, start>::Expand()
+template<typename T, int DefaultCapacity, int ExpansionRatio>
+void ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::Expand()
 {	
-	T* tempField = new T[numberOfElements]();
+	fieldSize = fieldSize * ExpansionRatio;
+	T* tempField = new T[fieldSize];
+
+	for (int i = 0; i < numberOfElements; i++)
+	{
+		tempField[i] = field[i];
+	}
+	
+	
+	delete[] field;
+	field = tempField;
+
+	/*fieldSize = fieldSize * ExpansionRatio;
+	T* tempField = new T[numberOfElements];
 
 	for (int i = 0; i < numberOfElements; i++)
 	{
 		tempField[i] = field[i];
 	}
 
-	fieldSize = fieldSize * expansionRatio;
-	field = new T[fieldSize]();
+	delete[] field;
+	field = new T[fieldSize];
 
 	for (int i = 0; i < numberOfElements; i++)
 	{
 		field[i] = tempField[i];
 	}	
 
-	delete[] tempField;	
+	delete[] tempField;*/
 }
 
-template<typename T, int start>
-ExpandingContainer<T, start>::ExpandingContainer()
+template<typename T, int DefaultCapacity, int ExpansionRatio>
+ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::ExpandingContainer()
 {
-	field = new T[startSize]();
-	fieldSize = startSize;
+	field = new T[DefaultCapacity];	
+	fieldSize = DefaultCapacity;
 	numberOfElements = 0;
 }
 
-template<typename T, int start>
-ExpandingContainer<T, start>::~ExpandingContainer()
-{
-	//delete[] field; // ??????
+template<typename T, int DefaultCapacity, int ExpansionRatio>
+ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::~ExpandingContainer()
+{	
+	delete[] field;
 }
 
-template<typename T, int start>
-void ExpandingContainer<T, start>::Add(const T& obj)
+template<typename T, int DefaultCapacity, int ExpansionRatio>
+void ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::Add(const T& obj)
 {
 	if (!HasEmptySpace())
 	{
@@ -56,8 +69,8 @@ void ExpandingContainer<T, start>::Add(const T& obj)
 	field[numberOfElements++] = obj;	
 }
 
-template<typename T, int start>
-T& ExpandingContainer<T, start>::operator[](int index)
+template<typename T, int DefaultCapacity, int ExpansionRatio>
+T& ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::operator[](int index)
 {
 	if (index < 0 || index >= numberOfElements)
 	{
@@ -67,8 +80,8 @@ T& ExpandingContainer<T, start>::operator[](int index)
 	return field[index];
 }
 
-template<typename T, int start>
-T ExpandingContainer<T, start>::operator[](int index) const {
+template<typename T, int DefaultCapacity, int ExpansionRatio>
+T ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::operator[](int index) const {
 	if (index < 0 || index >= numberOfElements)
 	{
 		throw out_of_range("Index is out of range!");
@@ -77,14 +90,14 @@ T ExpandingContainer<T, start>::operator[](int index) const {
 	return field[index];
 }
 
-template<typename T, int start>
-unsigned int ExpandingContainer<T, start>::Size() const
+template<typename T, int DefaultCapacity, int ExpansionRatio>
+unsigned int ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::Size() const
 {
 	return numberOfElements;
 }
 
-template<typename T, int start>
-void ExpandingContainer<T, start>::AddAtIndex(int index, const T& obj)
+template<typename T, int DefaultCapacity, int ExpansionRatio>
+void ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::AddAtIndex(int index, const T& obj)
 {
 	if (index < 0 || index > numberOfElements)
 	{
@@ -115,8 +128,8 @@ void ExpandingContainer<T, start>::AddAtIndex(int index, const T& obj)
 	}
 }
 
-template<typename T, int start>
-void ExpandingContainer<T, start>::DeleteAtIndex(int index)
+template<typename T, int DefaultCapacity, int ExpansionRatio>
+void ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::DeleteAtIndex(int index)
 {
 	if (index < 0 || index >= numberOfElements)
 	{
@@ -132,4 +145,7 @@ void ExpandingContainer<T, start>::DeleteAtIndex(int index)
 }
 
 template
-class ExpandingContainer<int, 5>;
+class ExpandingContainer<int, 5, 2>;
+
+template
+class ExpandingContainer<string, 5, 2>;
