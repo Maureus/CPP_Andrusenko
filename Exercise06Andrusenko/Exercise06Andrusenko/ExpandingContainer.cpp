@@ -85,11 +85,47 @@ unsigned int ExpandingContainer<T, start>::Size() const
 template<typename T, int start>
 void ExpandingContainer<T, start>::AddOnIndex(int index, const T& obj)
 {
+	if (index < 0 || index > numberOfElements)
+	{
+		throw out_of_range("Array indexing violation!");
+	}
+
+	if (!HasEmptySpace())
+	{
+		Expand();
+
+		for (int i = numberOfElements; i > index; i--)
+		{
+			field[i] = field[i - 1];
+		}
+		field[index] = obj;
+		numberOfElements++;
+	}
+	else
+	{
+		for (int i = numberOfElements; i > index; i--)
+		{
+			field[i] = field[i - 1];
+		}
+		field[index] = obj;
+		numberOfElements++;
+	}
 }
 
 template<typename T, int start>
 void ExpandingContainer<T, start>::DeleteOnIndex(int index)
 {
+	if (index < 0 || index >= numberOfElements)
+	{
+		throw out_of_range("Index is out of range!");
+	}
+	
+	for (int i = index; i < numberOfElements; i++)
+	{
+		field[i] = field[i+1];		
+	}
+
+	numberOfElements--;	
 }
 
 template
