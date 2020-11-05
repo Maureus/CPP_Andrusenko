@@ -1,7 +1,6 @@
 #include "ExpandingContainer.h"
 #include <stdexcept>
 #include <iostream>
-#include <algorithm>
 
 using namespace std;
 
@@ -22,7 +21,7 @@ void ExpandingContainer<T, start>::Expand()
 	}
 
 	fieldSize = fieldSize * expansionRatio;
-	field = new T[fieldSize];
+	field = new T[fieldSize]();
 
 	for (int i = 0; i < numberOfElements; i++)
 	{
@@ -61,7 +60,7 @@ T& ExpandingContainer<T, start>::operator[](int index)
 {
 	if (index < 0 || index >= numberOfElements)
 	{
-		throw std::out_of_range("Index is out of range!");
+		throw out_of_range("Index is out of range!");
 	}
 
 	return field[index];
@@ -71,7 +70,7 @@ template<typename T, int start>
 T ExpandingContainer<T, start>::operator[](int index) const {
 	if (index < 0 || index >= numberOfElements)
 	{
-		throw std::out_of_range("Index is out of range!");
+		throw out_of_range("Index is out of range!");
 	}
 
 	return field[index];

@@ -14,7 +14,7 @@ int main(int argc, char* argv)
 	for (int i = 0; i < intContainer.Size(); i++)
 	{
 		cout << intContainer[i] << endl;
-	}
+	}	
 	
 	return 0;
 }
