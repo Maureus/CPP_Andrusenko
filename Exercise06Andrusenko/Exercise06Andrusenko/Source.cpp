@@ -35,12 +35,6 @@ int main(int argc, char* argv)
 		intContainer.DeleteAtIndex(19);
 		cout << "Number of elements: " << intContainer.Size() << endl;
 
-		/*for (int i = 0; i < intContainer.Size(); i++)
-		{
-			cout << intContainer[i] << endl;
-		}
-
-		cout << "Number of elements: " << intContainer.Size() << endl;*/
 
 		intContainer.AddAtIndex(11, 378);
 		intContainer.AddAtIndex(16, 378);
