@@ -18,8 +18,8 @@ public:
 	T& operator[](int index);
 	T operator[](int index) const;
 	unsigned int Size() const;
-	void AddOnIndex(int index, const T& obj);
-	void DeleteOnIndex(int index);	
+	void AddAtIndex(int index, const T& obj);
+	void DeleteAtIndex(int index);	
 };
 
 

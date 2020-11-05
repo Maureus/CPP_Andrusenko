@@ -1,6 +1,7 @@
 #include "ExpandingContainer.h"
 #include <stdexcept>
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -83,11 +84,13 @@ unsigned int ExpandingContainer<T, start>::Size() const
 }
 
 template<typename T, int start>
-void ExpandingContainer<T, start>::AddOnIndex(int index, const T& obj)
+void ExpandingContainer<T, start>::AddAtIndex(int index, const T& obj)
 {
 	if (index < 0 || index > numberOfElements)
 	{
-		throw out_of_range("Array indexing violation!");
+		std::ostringstream os;
+		os << "Array indexing violation! Index can't be negative and the last index you can add at is: " << numberOfElements << "!";
+		throw out_of_range(os.str());
 	}
 
 	if (!HasEmptySpace())
@@ -113,7 +116,7 @@ void ExpandingContainer<T, start>::AddOnIndex(int index, const T& obj)
 }
 
 template<typename T, int start>
-void ExpandingContainer<T, start>::DeleteOnIndex(int index)
+void ExpandingContainer<T, start>::DeleteAtIndex(int index)
 {
 	if (index < 0 || index >= numberOfElements)
 	{

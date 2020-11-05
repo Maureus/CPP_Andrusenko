@@ -37,15 +37,16 @@ int main(int argc, char* argv)
 
 		cout << "Number of elements: " << intContainer.Size() << endl;*/
 
-		intContainer.AddOnIndex(11, 378);
-		intContainer.AddOnIndex(16, 378);
-		intContainer.DeleteOnIndex(16);
+		intContainer.AddAtIndex(11, 378);
+		intContainer.AddAtIndex(16, 378);
+		intContainer.DeleteAtIndex(16);
 		for (int i = 0; i < intContainer.Size(); i++)
 		{
 			cout << intContainer[i] << endl;
 		}
 
 		cout << "Number of elements: " << intContainer.Size() << endl;
+		intContainer.AddAtIndex(42, 378);
 	}
 	catch (const exception& e)
 	{
