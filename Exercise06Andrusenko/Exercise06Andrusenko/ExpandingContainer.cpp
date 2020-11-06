@@ -20,8 +20,7 @@ void ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::Expand()
 	for (int i = 0; i < numberOfElements; i++)
 	{
 		tempField[i] = field[i];
-	}
-	
+	}	
 	
 	delete[] field;
 	field = tempField;
