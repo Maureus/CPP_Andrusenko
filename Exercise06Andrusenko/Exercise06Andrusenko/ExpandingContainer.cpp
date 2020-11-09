@@ -8,22 +8,22 @@ using namespace std;
 template<typename T, int DefaultCapacity, int ExpansionRatio>
 bool ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::HasEmptySpace() const
 {
-	return numberOfElements < fieldSize;
+	return numberOfElements < arraySize;
 }
 
 template<typename T, int DefaultCapacity, int ExpansionRatio>
 void ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::Expand()
 {	
-	fieldSize = fieldSize * ExpansionRatio;
-	T* tempField = new T[fieldSize];
+	arraySize = arraySize * ExpansionRatio;
+	T* tempField = new T[arraySize];
 
 	for (int i = 0; i < numberOfElements; i++)
 	{
-		tempField[i] = field[i];
+		tempField[i] = array[i];
 	}	
 	
-	delete[] field;
-	field = tempField;
+	delete[] array;
+	array = tempField;
 
 	/*fieldSize = fieldSize * ExpansionRatio;
 	T* tempField = new T[numberOfElements];
@@ -47,15 +47,15 @@ void ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::Expand()
 template<typename T, int DefaultCapacity, int ExpansionRatio>
 ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::ExpandingContainer()
 {
-	field = new T[DefaultCapacity];	
-	fieldSize = DefaultCapacity;
+	array = new T[DefaultCapacity];	
+	arraySize = DefaultCapacity;
 	numberOfElements = 0;
 }
 
 template<typename T, int DefaultCapacity, int ExpansionRatio>
 ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::~ExpandingContainer()
 {	
-	delete[] field;
+	delete[] array;
 }
 
 template<typename T, int DefaultCapacity, int ExpansionRatio>
@@ -65,7 +65,7 @@ void ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::Add(const T& obj)
 	{
 		Expand();
 	}	
-	field[numberOfElements++] = obj;	
+	array[numberOfElements++] = obj;	
 }
 
 template<typename T, int DefaultCapacity, int ExpansionRatio>
@@ -76,7 +76,7 @@ T& ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::operator[](int index)
 		throw out_of_range("Index is out of range!");
 	}
 
-	return field[index];
+	return array[index];
 }
 
 template<typename T, int DefaultCapacity, int ExpansionRatio>
@@ -86,7 +86,7 @@ T ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::operator[](int index) 
 		throw out_of_range("Index is out of range!");
 	}
 
-	return field[index];
+	return array[index];
 }
 
 template<typename T, int DefaultCapacity, int ExpansionRatio>
@@ -111,18 +111,18 @@ void ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::AddAtIndex(int inde
 
 		for (int i = numberOfElements; i > index; i--)
 		{
-			field[i] = field[i - 1];
+			array[i] = array[i - 1];
 		}
-		field[index] = obj;
+		array[index] = obj;
 		numberOfElements++;
 	}
 	else
 	{
 		for (int i = numberOfElements; i > index; i--)
 		{
-			field[i] = field[i - 1];
+			array[i] = array[i - 1];
 		}
-		field[index] = obj;
+		array[index] = obj;
 		numberOfElements++;
 	}
 }
@@ -137,7 +137,7 @@ void ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::DeleteAtIndex(int i
 	
 	for (int i = index; i < numberOfElements; i++)
 	{
-		field[i] = field[i+1];		
+		array[i] = array[i+1];		
 	}
 
 	numberOfElements--;	

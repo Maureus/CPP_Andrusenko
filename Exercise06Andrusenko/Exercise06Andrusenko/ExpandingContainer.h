@@ -3,8 +3,8 @@
 template<typename T, int DefaultCapacity = 5, int ExpansionRatio = 2>
 class ExpandingContainer
 {	
-	T* field;
-	unsigned int fieldSize;
+	T* array;
+	unsigned int arraySize;
 	unsigned int numberOfElements;
 	bool HasEmptySpace() const;
 	void Expand();
