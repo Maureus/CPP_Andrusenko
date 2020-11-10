@@ -21,8 +21,8 @@ public:
 	ExpandingContainer();
 	~ExpandingContainer();
 	void Add(const T& obj);
-	T& operator[](int index);
-	T operator[](int index) const;
+	T& operator[](int index) const;
+	T operator[](int index);
 	unsigned int Size() const;
 	void AddAtIndex(int index, const T& obj);
 	void DeleteAtIndex(int index);
@@ -74,7 +74,7 @@ void ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::Add(const T& obj)
 }
 
 template<typename T, int DefaultCapacity, int ExpansionRatio>
-T& ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::operator[](int index)
+T& ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::operator[](int index) const
 {
 	if (index < 0 || index >= numberOfElements)
 	{
@@ -85,7 +85,8 @@ T& ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::operator[](int index)
 }
 
 template<typename T, int DefaultCapacity, int ExpansionRatio>
-T ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::operator[](int index) const {
+T ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::operator[](int index)
+{
 	if (index < 0 || index >= numberOfElements)
 	{
 		throw out_of_range("Index is out of range!");
@@ -105,7 +106,7 @@ void ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::AddAtIndex(int inde
 {
 	if (index < 0 || index > numberOfElements)
 	{
-		std::ostringstream os;
+		ostringstream os;
 		os << "Array indexing violation! Index can't be negative and the last index you can add at is: " << numberOfElements << "!";
 		throw out_of_range(os.str());
 	}
