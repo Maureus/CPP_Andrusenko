@@ -1,4 +1,6 @@
 #pragma once
+#ifndef EXPANDING_CONTAINER_H
+#define EXPANDING_CONTAINER_H
 
 #include <stdexcept>
 #include <iostream>
@@ -8,7 +10,7 @@ using namespace std;
 
 template<typename T, int DefaultCapacity = 5, int ExpansionRatio = 2>
 class ExpandingContainer
-{	
+{
 	T* array;
 	unsigned int arraySize;
 	unsigned int numberOfElements;
@@ -23,7 +25,7 @@ public:
 	T operator[](int index) const;
 	unsigned int Size() const;
 	void AddAtIndex(int index, const T& obj);
-	void DeleteAtIndex(int index);	
+	void DeleteAtIndex(int index);
 };
 
 template<typename T, int DefaultCapacity, int ExpansionRatio>
@@ -45,24 +47,6 @@ void ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::Expand()
 
 	delete[] array;
 	array = tempField;
-
-	/*fieldSize = fieldSize * ExpansionRatio;
-	T* tempField = new T[numberOfElements];
-
-	for (int i = 0; i < numberOfElements; i++)
-	{
-		tempField[i] = field[i];
-	}
-
-	delete[] field;
-	field = new T[fieldSize];
-
-	for (int i = 0; i < numberOfElements; i++)
-	{
-		field[i] = tempField[i];
-	}
-
-	delete[] tempField;*/
 }
 
 template<typename T, int DefaultCapacity, int ExpansionRatio>
@@ -163,5 +147,10 @@ void ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::DeleteAtIndex(int i
 
 	numberOfElements--;
 }
+
+
+
+
+#endif // !EXPANDING_CONTAINER_H
 
 
