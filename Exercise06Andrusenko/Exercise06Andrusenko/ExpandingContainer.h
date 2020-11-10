@@ -8,7 +8,7 @@
 
 using namespace std;
 
-template<typename T, int DefaultCapacity = 5, int ExpansionRatio = 2>
+template<typename T, int DefaultCapacity, int ExpansionRatio>
 class ExpandingContainer
 {
 	T* array;
@@ -19,7 +19,7 @@ class ExpandingContainer
 
 public:
 	ExpandingContainer();
-	virtual ~ExpandingContainer();
+	~ExpandingContainer();
 	void Add(const T& obj);
 	T& operator[](int index);
 	T operator[](int index) const;
