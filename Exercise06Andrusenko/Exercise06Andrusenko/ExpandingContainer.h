@@ -150,8 +150,4 @@ void ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::DeleteAtIndex(int i
 }
 
 
-
-
 #endif // !EXPANDING_CONTAINER_H
-
-
