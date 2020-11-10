@@ -19,7 +19,7 @@ class ExpandingContainer
 
 public:
 	ExpandingContainer();
-	~ExpandingContainer();
+	virtual ~ExpandingContainer();
 	void Add(const T& obj);
 	T& operator[](int index);
 	T operator[](int index) const;
