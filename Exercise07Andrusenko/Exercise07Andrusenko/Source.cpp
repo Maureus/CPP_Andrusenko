@@ -69,6 +69,7 @@ Person* readTxt() {
 void writeBin() {
 	cout << "Writing " << binFile << endl;
 	Person people[n];
+	srand(time(NULL));
 
 	for (int i = 0; i < n; i++)
 	{
