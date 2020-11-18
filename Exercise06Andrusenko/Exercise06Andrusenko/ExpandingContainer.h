@@ -113,24 +113,16 @@ void ExpandingContainer<T, DefaultCapacity, ExpansionRatio>::AddAtIndex(int inde
 
 	if (!HasEmptySpace())
 	{
-		Expand();
-
-		for (int i = numberOfElements; i > index; i--)
-		{
-			array[i] = array[i - 1];
-		}
-		array[index] = obj;
-		numberOfElements++;
+		Expand();		
 	}
-	else
+	
+	for (int i = numberOfElements; i > index; i--)
 	{
-		for (int i = numberOfElements; i > index; i--)
-		{
-			array[i] = array[i - 1];
-		}
-		array[index] = obj;
-		numberOfElements++;
+		array[i] = array[i - 1];
 	}
+	array[index] = obj;
+	numberOfElements++;
+	
 }
 
 template<typename T, int DefaultCapacity, int ExpansionRatio>
