@@ -16,6 +16,7 @@ const string binFile = "people.bin";
 
 
 void save() {
+	cout << "Writing " << txtFile << endl;
 	Person people[n];
 
 	srand(time(NULL));
@@ -26,8 +27,8 @@ void save() {
 		int year = rand() % 20 + 1980;
 		int zip = rand() % 50000 + 10000;
 		Date dob{ day, month, year };
-		Address add{ "street" + to_string(i), "city" + to_string(i), zip };
-		Person p{ "Firstname" + to_string(i), "Lastname" + to_string(i), add, dob };
+		Address lta{ "street" + to_string(i), "city" + to_string(i), zip };
+		Person p{ "Firstname" + to_string(i), "Lastname" + to_string(i), lta, dob };
 		people[i] = p;
 	}
 
@@ -40,7 +41,7 @@ void save() {
 }
 
 Person* load() {
-	cout << txtFile << endl;
+	cout << "Reading " << txtFile << endl;
 	int numberOfLines = 0;
 	std::string line;
 	std::ifstream read(txtFile);
@@ -64,6 +65,7 @@ Person* load() {
 }
 
 void saveBin() {
+	cout << "Writing " << binFile << endl;
 	Person people[n];
 
 	for (int i = 0; i < n; i++)
@@ -73,8 +75,8 @@ void saveBin() {
 		int year = rand() % 20 + 1980;
 		int zip = rand() % 50000 + 10000;
 		Date dob{ day, month, year };
-		Address add{ "street" + to_string(i), "city" + to_string(i), zip };
-		Person p{ "Firstname" + to_string(i), "Lastname" + to_string(i), add, dob };
+		Address lta{ "street" + to_string(i), "city" + to_string(i), zip };
+		Person p{ "Firstname" + to_string(i), "Lastname" + to_string(i), lta, dob };
 		people[i] = p;
 	}
 
@@ -88,7 +90,7 @@ void saveBin() {
 }
 
 Person* loadBin() {
-	cout << binFile << endl;
+	cout << "Reading "<< binFile << endl;
 	std::ifstream readFile(binFile, std::ios::out | std::ios::binary);
 	Person* people = new Person[n];
 	for (int i = 0; i < n; i++)
