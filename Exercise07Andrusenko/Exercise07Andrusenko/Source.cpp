@@ -15,7 +15,7 @@ const string txtFile = "people.txt";
 const string binFile = "people.bin";
 
 
-void save() {
+void writeTxt() {
 	cout << "Writing " << txtFile << endl;
 	Person people[n];
 
@@ -40,22 +40,24 @@ void save() {
 	write.close();
 }
 
-Person* load() {
+Person* readTxt() {
 	cout << "Reading " << txtFile << endl;
 	int numberOfLines = 0;
-	std::string line;
-	std::ifstream read(txtFile);
+	string line;
+	ifstream read(txtFile);
 
-	while (std::getline(read, line))
+	while (getline(read, line))
+	{
 		++numberOfLines;
+	}		
 
 	read.clear();
 	read.seekg(0);
 
 	Person* people = new Person[numberOfLines];	
 	for (int i = 0; i < numberOfLines; i++) {
-		std::getline(read, line);
-		std::istringstream stream(line);		
+		getline(read, line);
+		istringstream stream(line);		
 		stream >> people[i];		
 	}
 
@@ -64,7 +66,7 @@ Person* load() {
 	return people;	
 }
 
-void saveBin() {
+void writeBin() {
 	cout << "Writing " << binFile << endl;
 	Person people[n];
 
@@ -80,24 +82,28 @@ void saveBin() {
 		people[i] = p;
 	}
 
-	ofstream output;
-	output.open(binFile, ios::out | ios::binary);
-	output.write((const char*)&people, sizeof(people));
-
-	output.close();
-
-
+	ofstream writeFile(binFile, ios::binary);
+	if (writeFile.is_open())
+	{
+		writeFile.write((const char*)&people, sizeof(people));
+		writeFile.close();
+	}
 }
 
-Person* loadBin() {
+Person* readBin() {
 	cout << "Reading "<< binFile << endl;
-	std::ifstream readFile(binFile, std::ios::out | std::ios::binary);
+
+	ifstream readFile(binFile, ios::binary);
 	Person* people = new Person[n];
-	for (int i = 0; i < n; i++)
-	{
-		readFile.read((char*)&people[i], sizeof(Person));
-	}		
-	readFile.close();
+	if (readFile.is_open())
+	{		
+		for (int i = 0; i < n; i++)
+		{
+			readFile.read((char*)&people[i], sizeof(Person));
+		}
+		readFile.close();
+	}
+	
 	return people;
 }
 
@@ -106,15 +112,15 @@ int main(int argc, char* argv)
 {	 	 
 	try
 	{
-		save();
-		Person* people1 = load();
+		writeTxt();
+		Person* people1 = readTxt();
 		for (int i = 0; i < n; i++)
 		{
 			cout << people1[i] << endl;
 		}		
 
-		saveBin();
-		Person* people2 = loadBin();
+		writeBin();
+		Person* people2 = readBin();
 		for (int i = 0; i < n; i++)
 		{
 			cout << people2[i] << endl;
