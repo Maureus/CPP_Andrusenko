@@ -9,7 +9,7 @@ Person::Person()
 
 Person::Person(const string& firstname, const string& lastname,const Address& lta, const Date& dob)
 {
-	if (firstname.empty() && lastname.empty())
+	if (firstname.empty() || lastname.empty())
 	{
 		throw invalid_argument("Unaceptable person!");
 	}

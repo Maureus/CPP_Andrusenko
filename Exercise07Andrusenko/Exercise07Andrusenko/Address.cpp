@@ -9,7 +9,7 @@ Address::Address()
 
 Address::Address(const std::string& street, const std::string& city, const int& zip)
 {
-	if (street.empty() && city.empty() && zip <= 0) {
+	if (street.empty() || city.empty() || zip <= 0) {
 		throw invalid_argument("Unaceptable address!");
 	}
 
