@@ -22,7 +22,7 @@ Date::Date()
 
 Date::Date(int day, int month, int year)
 {
-	if (day <= 0 && month <= 0 && month > 12 && year <= 0)
+	if (day <= 0 || day > 31 || month <= 0 || month > 12 || year <= 0)
 	{
 		throw invalid_argument("Unacceptable date!");
 	}
