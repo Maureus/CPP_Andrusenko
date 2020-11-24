@@ -17,27 +17,22 @@ const string binFile = "people.bin";
 
 void writeTxt() {
 	cout << "Writing " << txtFile << endl;
-	Person people[n];
 
-	srand(time(NULL));
-	for (int i = 0; i < n; i++)
-	{
-		int day = rand() % 30 + 1;
-		int month = rand() % 12 + 1;
-		int year = rand() % 20 + 1980;
-		int zip = rand() % 50000 + 10000;
-		Date dob{ day, month, year };
-		Address lta{ "street" + to_string(i), "city" + to_string(i), zip };
-		Person p{ "Firstname" + to_string(i), "Lastname" + to_string(i), lta, dob };
-		people[i] = p;
-	}
+	srand(time(NULL));	
 
 	ofstream write;
 	write.open(txtFile);
 	if (write.is_open())
 	{
 		for (int i = 0; i < n; i++) {
-			write << people[i] << std::endl;
+			int day = rand() % 30 + 1;
+			int month = rand() % 12 + 1;
+			int year = rand() % 20 + 1980;
+			int zip = rand() % 50000 + 10000;
+			Date dob{ day, month, year };
+			Address lta{ "street" + to_string(i), "city" + to_string(i), zip };
+			Person p{ "Firstname" + to_string(i), "Lastname" + to_string(i), lta, dob };			
+			write << p << std::endl;
 		}
 		write.close();
 	}	
