@@ -5,7 +5,7 @@ using namespace std;
 
 ostream& operator<<(ostream& os, const Date& date)
 {
-	os << date.day << "." << date.month << "." << date.year;
+	os << date.day << '.' << date.month << '.' << date.year;
 	return os;
 }
 
