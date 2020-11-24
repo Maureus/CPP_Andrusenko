@@ -53,7 +53,7 @@ Person* readTxt() {
 	{
 		while (getline(read, line))
 		{
-			++numberOfLines;
+			numberOfLines++;
 		}
 
 		read.clear();
