@@ -34,10 +34,13 @@ void writeTxt() {
 
 	ofstream write;
 	write.open(txtFile);
-	for (int i = 0; i < n; i++) {
-		write << people[i] << std::endl;
-	}
-	write.close();
+	if (write.is_open())
+	{
+		for (int i = 0; i < n; i++) {
+			write << people[i] << std::endl;
+		}
+		write.close();
+	}	
 }
 
 Person* readTxt() {
@@ -46,24 +49,26 @@ Person* readTxt() {
 	string line;
 	ifstream read(txtFile);
 
-	while (getline(read, line))
+	if (read.is_open())
 	{
-		++numberOfLines;
-	}		
+		while (getline(read, line))
+		{
+			++numberOfLines;
+		}
 
-	read.clear();
-	read.seekg(0);
+		read.clear();
+		read.seekg(0);
 
-	Person* people = new Person[numberOfLines];	
-	for (int i = 0; i < numberOfLines; i++) {
-		getline(read, line);
-		istringstream stream(line);		
-		stream >> people[i];		
+		Person* people = new Person[numberOfLines];
+		for (int i = 0; i < numberOfLines; i++) {
+			getline(read, line);
+			istringstream stream(line);
+			stream >> people[i];
+		}
+
+		read.close();
+		return people;
 	}
-
-	read.close();
-
-	return people;	
 }
 
 void writeBin() {
