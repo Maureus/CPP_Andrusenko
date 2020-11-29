@@ -106,9 +106,9 @@ inline Array2D<T>::~Array2D()
 template<typename T>
 inline void Array2D<T>::PutAt(int row, int column, T value)
 {
-	if (row < 0 || row > rows || column < 0 || column > columns)
+	if (row < 0 || row >= rows || column < 0 || column >= columns)
 	{
-		throw std::out_of_range("Given position is out of range of array!");
+		throw std::out_of_range("Given position is out of array's range!");
 	}
 
 	array2D[row][column] = value;
@@ -129,9 +129,9 @@ inline void Array2D<T>::PutFrom(T* array)
 template<typename T>
 inline T& Array2D<T>::GetAt(int row, int column)
 {
-	if (row < 0 || row > rows || column < 0 || column > columns)
+	if (row < 0 || row >= rows || column < 0 || column >= columns)
 	{
-		throw std::out_of_range("Given position is out of range of array!");
+		throw std::out_of_range("Given position is out of array's range!");
 	}
 
 	return array2D[row][column];
@@ -140,9 +140,9 @@ inline T& Array2D<T>::GetAt(int row, int column)
 template<typename T>
 inline const T& Array2D<T>::GetAt(int row, int column) const
 {
-	if (row < 0 || row > rows || column < 0 || column > columns)
+	if (row < 0 || row >= rows || column < 0 || column >= columns)
 	{
-		throw std::out_of_range("Given position is out of range of array!");
+		throw std::out_of_range("Given position is out of array's range!");
 	}
 
 	return array2D[row][column];
