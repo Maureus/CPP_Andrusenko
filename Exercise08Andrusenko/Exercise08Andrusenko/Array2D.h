@@ -40,19 +40,15 @@ public:
 
 	// Operace vždy vytvářejí novou matici a nemění aktuální objekt
 	Array2D<T> Transpose() const;
-	Array2D<T> Multiplication(const Array2D& m) const;
+	Array2D<T> Multiplication(const Array2D& matrix) const;
 	Array2D<T> Multiplication(T skalar) const;
-	Array2D<T> Addition(const Array2D& m) const;
+	Array2D<T> Addition(const Array2D& matrix) const;
 	Array2D<T> Addition(T skalar) const;
 
 	// pro porovnání shody dvou matic vytvořte metodu
 	bool IsEqual(const Array2D& m) const;
 
 	void Print() const;
-
-	int GetRows() const;
-	int GetColumns() const;
-	T** GetArray2D() const;
 };
 
 #endif // !ARRAY_2D_H
@@ -80,10 +76,10 @@ inline Array2D<T>::Array2D(int rows, int columns)
 }
 
 template<typename T>
-inline Array2D<T>::Array2D(const Array2D<T>& array2D)
+inline Array2D<T>::Array2D(const Array2D<T>& matrix)
 {
-	rows = array2D.rows;
-	columns = array2D.columns;
+	rows = matrix.rows;
+	columns = matrix.columns;
 	this->array2D = new T * [rows];
 
 	for (int i = 0; i < rows; i++)
@@ -91,7 +87,7 @@ inline Array2D<T>::Array2D(const Array2D<T>& array2D)
 		this->array2D[i] = new T[columns];
 		for (int j = 0; j < columns; j++)
 		{
-			this->array2D[i][j] = array2D.array2D[i][j];
+			this->array2D[i][j] = matrix.array2D[i][j];
 		}
 	}
 }
@@ -169,25 +165,24 @@ inline Array2D<T> Array2D<T>::Transpose() const
 }
 
 template<typename T>
-inline Array2D<T> Array2D<T>::Multiplication(const Array2D& m) const
+inline Array2D<T> Array2D<T>::Multiplication(const Array2D& matrix) const
 {
-	if (columns != m.GetRows())
+	if (columns != matrix.rows)
 	{
 		throw std::invalid_argument("Number of rows and columns must be bigger than 0!");
 	}
 
-	Array2D<T> newArray2D{ rows, columns };
-	auto tempArray = m.GetArray2D();
+	Array2D<T> newArray2D{ rows, columns };	
 
 	for (int i = 0; i < columns; i++)
 	{
-		for (int j = 0; j < m.GetRows(); j++)
+		for (int j = 0; j < matrix.rows; j++)
 		{
 			T temp = 0;
 
-			for (int k = 0; k < m.GetColumns(); k++)
+			for (int k = 0; k < matrix.columns; k++)
 			{
-				temp += array2D[i][k] * tempArray[k][j];
+				temp += array2D[i][k] * matrix.array2D[k][j];
 			}
 
 			newArray2D.array2D[i][j] = temp;
@@ -214,9 +209,9 @@ inline Array2D<T> Array2D<T>::Multiplication(T skalar) const
 }
 
 template<typename T>
-inline Array2D<T> Array2D<T>::Addition(const Array2D& m) const
+inline Array2D<T> Array2D<T>::Addition(const Array2D& matrix) const
 {
-	if (rows != m.rows || columns != m.columns)
+	if (rows != matrix.rows || columns != matrix.columns)
 	{
 		throw std::invalid_argument("Arrays must be of the same size!");
 	}
@@ -227,7 +222,7 @@ inline Array2D<T> Array2D<T>::Addition(const Array2D& m) const
 	{
 		for (int j = 0; j < columns; j++)
 		{
-			newArray2D.array2D[i][j] = m.array2D[i][j] + array2D[i][j];
+			newArray2D.array2D[i][j] = matrix.array2D[i][j] + array2D[i][j];
 		}
 	}
 
@@ -251,9 +246,9 @@ inline Array2D<T> Array2D<T>::Addition(T skalar) const
 }
 
 template<typename T>
-inline bool Array2D<T>::IsEqual(const Array2D& m) const
+inline bool Array2D<T>::IsEqual(const Array2D& matrix) const
 {
-	if (rows != m.rows || columns != m.columns)
+	if (rows != matrix.rows || columns != matrix.columns)
 	{
 		return false;
 	}
@@ -262,7 +257,7 @@ inline bool Array2D<T>::IsEqual(const Array2D& m) const
 	{
 		for (int j = 0; j < columns; j++)
 		{
-			if (array2D[i][j] != m.array2D[i][j])
+			if (array2D[i][j] != matrix.array2D[i][j])
 			{
 				return false;
 			}
@@ -289,24 +284,6 @@ inline void Array2D<T>::Print() const
 }
 
 template<typename T>
-inline int Array2D<T>::GetRows() const
-{
-	return rows;
-}
-
-template<typename T>
-inline int Array2D<T>::GetColumns() const
-{
-	return columns;
-}
-
-template<typename T>
-inline T** Array2D<T>::GetArray2D() const
-{
-	return array2D;
-}
-
-template<typename T>
 template<typename R>
 inline Array2D<R> Array2D<T>::Cast() const
 {
@@ -316,7 +293,7 @@ inline Array2D<R> Array2D<T>::Cast() const
 	{
 		for (int j = 0; j < columns; j++)
 		{
-			newArray2D.PutAt(i, j, static_cast<R>(this->GetAt(i, j)));
+			newArray2D.PutAt(i, j, static_cast<R>(GetAt(i, j)));
 		}
 	}
 
