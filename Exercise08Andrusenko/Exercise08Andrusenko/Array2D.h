@@ -51,7 +51,7 @@ public:
 	void Print() const;
 };
 
-#endif // !ARRAY_2D_H
+
 
 template<typename T>
 inline Array2D<T>::Array2D(int rows, int columns)
@@ -299,3 +299,5 @@ inline Array2D<R> Array2D<T>::Cast() const
 
 	return newArray2D;
 }
+
+#endif // !ARRAY_2D_H
