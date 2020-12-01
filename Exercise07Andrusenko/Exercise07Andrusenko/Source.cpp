@@ -64,6 +64,8 @@ Person* readTxt() {
 		read.close();
 		return people;
 	}
+
+	return nullptr;
 }
 
 void writeBin() {
@@ -103,9 +105,11 @@ Person* readBin() {
 			readFile.read((char*)&people[i], sizeof(Person));
 		}
 		readFile.close();
+
+		return people;
 	}
 	
-	return people;
+	return nullptr;
 }
 
 
