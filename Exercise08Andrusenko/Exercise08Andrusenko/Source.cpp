@@ -5,7 +5,7 @@ int main(int atgv,  char* argc)
 {
 	try
 	{
-		//Array2D<char*> test{ 3,3 };
+		//Array2D<char> test{ 3,3 };
 		Array2D<int> m{ 3,3 };
 		int jednodpole[] = { 0,1,2,3,4,5,6,7,8 };
 		m.PutFrom(jednodpole);
