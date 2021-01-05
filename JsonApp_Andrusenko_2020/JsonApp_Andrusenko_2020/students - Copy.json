@@ -1,0 +1,1 @@
+{"students":[{"id":1,"firstname":"Andrii","lastname":"Andruseko","gender":"male","dateofbirth":{"day":23,"month":3,"year":1993},"assigned_subjects":[1,2]},{"id":2,"firstname":"Sara","lastname":"asdasdasd","gender":"female","dateofbirth":{"day":13,"month":5,"year":1996},"assigned_subjects":[1,2]}]},{"subjects":[{"id":1,"name":"Mathematics"},{"id":2,"name":"Statistics"}]}
